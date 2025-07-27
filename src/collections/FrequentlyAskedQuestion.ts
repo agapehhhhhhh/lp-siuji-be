@@ -52,14 +52,6 @@ export const FAQ: CollectionConfig = {
       defaultValue: true,
     },
     {
-      name: 'order',
-      type: 'number',
-      defaultValue: 0,
-      admin: {
-        description: 'Order of appearance in FAQ section',
-      },
-    },
-    {
       name: 'isFeatured',
       type: 'checkbox',
       defaultValue: false,
