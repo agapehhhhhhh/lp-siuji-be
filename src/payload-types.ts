@@ -72,14 +72,11 @@ export interface Config {
     'hero-section': HeroSection;
     'about-section': AboutSection;
     'why-choose-section': WhyChooseSection;
-    'contact-section': ContactSection;
     'portfolio-section': PortfolioSection;
     features: Feature;
     testimonials: Testimonial;
     'pricing-plans': PricingPlan;
     faq: Faq;
-    partners: Partner;
-    'platform-availability': PlatformAvailability;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -91,14 +88,11 @@ export interface Config {
     'hero-section': HeroSectionSelect<false> | HeroSectionSelect<true>;
     'about-section': AboutSectionSelect<false> | AboutSectionSelect<true>;
     'why-choose-section': WhyChooseSectionSelect<false> | WhyChooseSectionSelect<true>;
-    'contact-section': ContactSectionSelect<false> | ContactSectionSelect<true>;
     'portfolio-section': PortfolioSectionSelect<false> | PortfolioSectionSelect<true>;
     features: FeaturesSelect<false> | FeaturesSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'pricing-plans': PricingPlansSelect<false> | PricingPlansSelect<true>;
     faq: FaqSelect<false> | FaqSelect<true>;
-    partners: PartnersSelect<false> | PartnersSelect<true>;
-    'platform-availability': PlatformAvailabilitySelect<false> | PlatformAvailabilitySelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -188,16 +182,8 @@ export interface HeroSection {
   id: number;
   title: string;
   subtitle?: string | null;
-  description?: string | null;
   ctaText?: string | null;
-  ctaLink?: string | null;
   heroImage?: (number | null) | Media;
-  features?:
-    | {
-        feature: string;
-        id?: string | null;
-      }[]
-    | null;
   isActive?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -281,57 +267,6 @@ export interface WhyChooseSection {
   createdAt: string;
 }
 /**
- * Contact Us section content for landing page
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contact-section".
- */
-export interface ContactSection {
-  id: number;
-  title: string;
-  subtitle?: string | null;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  formConfig?: {
-    nameLabel?: string | null;
-    whatsappLabel?: string | null;
-    institutionLabel?: string | null;
-    messageLabel?: string | null;
-    submitButtonText?: string | null;
-    successMessage?: string | null;
-  };
-  contactInfo?: {
-    address?: string | null;
-    phone?: string | null;
-    email?: string | null;
-    workingHours?: string | null;
-    /**
-     * Format: +62812345678 (dengan kode negara)
-     */
-    whatsappNumber?: string | null;
-  };
-  isActive?: boolean | null;
-  /**
-   * Order of appearance in landing page
-   */
-  order?: number | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
  * Portfolio/Partners section content
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -339,24 +274,10 @@ export interface ContactSection {
  */
 export interface PortfolioSection {
   id: number;
+  /**
+   * Section title displayed above the logos
+   */
   title: string;
-  subtitle?: string | null;
-  description?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  category: 'university' | 'school' | 'corporate' | 'government' | 'training';
   logos?:
     | {
         logo: number | Media;
@@ -365,13 +286,12 @@ export interface PortfolioSection {
          * Optional: Link to institution website
          */
         url?: string | null;
-        order?: number | null;
         id?: string | null;
       }[]
     | null;
   isActive?: boolean | null;
   /**
-   * Order of appearance in landing page
+   * Order of appearance (lower numbers appear first)
    */
   order?: number | null;
   updatedAt: string;
@@ -503,87 +423,9 @@ export interface Faq {
     | null;
   isActive?: boolean | null;
   /**
-   * Order of appearance in FAQ section
-   */
-  order?: number | null;
-  /**
    * Show this FAQ prominently
    */
   isFeatured?: boolean | null;
-  /**
-   * How many users found this helpful
-   */
-  helpfulCount?: number | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "partners".
- */
-export interface Partner {
-  id: number;
-  name: string;
-  logo?: (number | null) | Media;
-  type: 'school' | 'university' | 'company' | 'government' | 'ngo';
-  description?: string | null;
-  website?: string | null;
-  location?: string | null;
-  partnershipDate?: string | null;
-  studentCount?: number | null;
-  isActive?: boolean | null;
-  /**
-   * Order of appearance in partners section
-   */
-  order?: number | null;
-  /**
-   * Show this partner prominently
-   */
-  isFeatured?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * Platform availability section with 3 platform showcase
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "platform-availability".
- */
-export interface PlatformAvailability {
-  id: number;
-  sectionTitle: string;
-  subtitle?: string | null;
-  platforms?:
-    | {
-        name: string;
-        /**
-         * Used for platform selection (e.g., "Android", "Website", "IOS")
-         */
-        slug: string;
-        mockupImage?: (number | null) | Media;
-        description?: string | null;
-        /**
-         * Only one platform should be marked as default
-         */
-        isDefault?: boolean | null;
-        order?: number | null;
-        id?: string | null;
-      }[]
-    | null;
-  infoBanner?: {
-    text?: string | null;
-    buttonLabel?: string | null;
-    buttonLink?: string | null;
-    /**
-     * CSS color value (hex, rgb, etc.)
-     */
-    backgroundColor?: string | null;
-  };
-  isActive?: boolean | null;
-  /**
-   * Order of appearance in landing page
-   */
-  order?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -615,10 +457,6 @@ export interface PayloadLockedDocument {
         value: number | WhyChooseSection;
       } | null)
     | ({
-        relationTo: 'contact-section';
-        value: number | ContactSection;
-      } | null)
-    | ({
         relationTo: 'portfolio-section';
         value: number | PortfolioSection;
       } | null)
@@ -637,14 +475,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'faq';
         value: number | Faq;
-      } | null)
-    | ({
-        relationTo: 'partners';
-        value: number | Partner;
-      } | null)
-    | ({
-        relationTo: 'platform-availability';
-        value: number | PlatformAvailability;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -735,16 +565,8 @@ export interface MediaSelect<T extends boolean = true> {
 export interface HeroSectionSelect<T extends boolean = true> {
   title?: T;
   subtitle?: T;
-  description?: T;
   ctaText?: T;
-  ctaLink?: T;
   heroImage?: T;
-  features?:
-    | T
-    | {
-        feature?: T;
-        id?: T;
-      };
   isActive?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -808,52 +630,16 @@ export interface WhyChooseSectionSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "contact-section_select".
- */
-export interface ContactSectionSelect<T extends boolean = true> {
-  title?: T;
-  subtitle?: T;
-  description?: T;
-  formConfig?:
-    | T
-    | {
-        nameLabel?: T;
-        whatsappLabel?: T;
-        institutionLabel?: T;
-        messageLabel?: T;
-        submitButtonText?: T;
-        successMessage?: T;
-      };
-  contactInfo?:
-    | T
-    | {
-        address?: T;
-        phone?: T;
-        email?: T;
-        workingHours?: T;
-        whatsappNumber?: T;
-      };
-  isActive?: T;
-  order?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolio-section_select".
  */
 export interface PortfolioSectionSelect<T extends boolean = true> {
   title?: T;
-  subtitle?: T;
-  description?: T;
-  category?: T;
   logos?:
     | T
     | {
         logo?: T;
         name?: T;
         url?: T;
-        order?: T;
         id?: T;
       };
   isActive?: T;
@@ -949,59 +735,7 @@ export interface FaqSelect<T extends boolean = true> {
         id?: T;
       };
   isActive?: T;
-  order?: T;
   isFeatured?: T;
-  helpfulCount?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "partners_select".
- */
-export interface PartnersSelect<T extends boolean = true> {
-  name?: T;
-  logo?: T;
-  type?: T;
-  description?: T;
-  website?: T;
-  location?: T;
-  partnershipDate?: T;
-  studentCount?: T;
-  isActive?: T;
-  order?: T;
-  isFeatured?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "platform-availability_select".
- */
-export interface PlatformAvailabilitySelect<T extends boolean = true> {
-  sectionTitle?: T;
-  subtitle?: T;
-  platforms?:
-    | T
-    | {
-        name?: T;
-        slug?: T;
-        mockupImage?: T;
-        description?: T;
-        isDefault?: T;
-        order?: T;
-        id?: T;
-      };
-  infoBanner?:
-    | T
-    | {
-        text?: T;
-        buttonLabel?: T;
-        buttonLink?: T;
-        backgroundColor?: T;
-      };
-  isActive?: T;
-  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }

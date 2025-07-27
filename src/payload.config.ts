@@ -12,14 +12,11 @@ import { Media } from './collections/Media'
 import HeroSection from './collections/HeroSection'
 import AboutSection from './collections/AboutSection'
 import WhyChooseSection from './collections/WhyChooseSection'
-import ContactSection from './collections/ContactSection'
 import PortfolioSection from './collections/PortfolioSection'
 import { Features  } from './collections/Features'
 import { Testimonials } from './collections/Testimonials'
 import { PricingPlans } from './collections/PricingPlans'
 import { FAQ } from './collections/FrequentlyAskedQuestion'
-import { Partners } from './collections/Partners'
-import { PlatformAvailability} from './collections/PlatformAvailability'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -58,15 +55,11 @@ export default buildConfig({
     HeroSection,
     AboutSection,
     WhyChooseSection,
-    ContactSection,
     PortfolioSection,
-    // Feature Collections
     Features, 
     Testimonials, 
     PricingPlans, 
-    FAQ, 
-    Partners, 
-    PlatformAvailability
+    FAQ
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

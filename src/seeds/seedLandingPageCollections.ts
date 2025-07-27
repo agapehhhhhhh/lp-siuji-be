@@ -11,13 +11,11 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
       payloadInstance.delete({ collection: 'hero-section', where: {} }),
       payloadInstance.delete({ collection: 'about-section', where: {} }),
       payloadInstance.delete({ collection: 'why-choose-section', where: {} }),
-      payloadInstance.delete({ collection: 'contact-section', where: {} }),
       payloadInstance.delete({ collection: 'features', where: {} }),
       payloadInstance.delete({ collection: 'testimonials', where: {} }),
       payloadInstance.delete({ collection: 'pricing-plans', where: {} }),
       payloadInstance.delete({ collection: 'faq', where: {} }),
-      payloadInstance.delete({ collection: 'partners', where: {} }),
-      payloadInstance.delete({ collection: 'platform-availability', where: {} }),
+      payloadInstance.delete({ collection: 'portfolio-section', where: {} }),
     ])
     console.log('✅ Existing data cleared.')
 
@@ -28,15 +26,8 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
       data: {
         title: 'Revolusikan Pendidikan Anda dengan SiUJI',
         subtitle: 'Platform Ujian Digital untuk Pembelajaran Modern',
-        description: 'Transformasikan ujian tradisional menjadi pengalaman digital yang menarik. SiUJI memberdayakan pendidik untuk membuat, mengelola, dan memantau ujian online dengan wawasan real-time dan analitik komprehensif.',
         ctaText: 'Mulai Sekarang',
-        ctaLink: '/register',
-        features: [
-          { feature: 'Pemantauan real-time' },
-          { feature: 'Lingkungan ujian yang aman' },
-          { feature: 'Analitik komprehensif' },
-          { feature: 'Dukungan multi-platform' }
-        ],
+        heroImage: null, // Dapat diupload melalui admin panel
         isActive: true
       }
     })
@@ -71,12 +62,20 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
             version: 1
           }
         },
-        isActive: true
+        slides: [], // Upload images via admin panel first, then add slides
+        rotatingImages: [], // Upload via admin panel
+        carouselConfig: {
+          autoSlide: true,
+          slideInterval: 4000,
+          pauseOnHover: true
+        },
+        isActive: true,
+        order: 1
       }
     })
     console.log('✅ About Section seeded')
 
-    // 3. Seed Why Choose Section (Global)
+    // 4. Seed Why Choose Section (Global)
     console.log('Seeding Why Choose Section...')
     await payloadInstance.create({
       collection: 'why-choose-section',
@@ -86,62 +85,25 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
         points: [
           {
             title: 'Pemantauan Real-Time',
-            description: 'Rangkul kekuatan pemantauan real-time dan kendalikan integritas ujian dengan teknologi proctoring canggih.'
+            description: 'Rangkul kekuatan pemantauan real-time dan kendalikan integritas ujian dengan teknologi proctoring canggih.',
+            icon: null // Upload via admin panel
           },
           {
             title: 'Akses Seumur Hidup',
-            description: 'Materi dan hasil ujian tersimpan aman dan dapat diakses kapan saja, mendukung pembelajaran berkelanjutan.'
+            description: 'Materi dan hasil ujian tersimpan aman dan dapat diakses kapan saja, mendukung pembelajaran berkelanjutan.',
+            icon: null // Upload via admin panel
           },
           {
             title: 'Komunitas Besar',
-            description: 'Terhubung, berkolaborasi, dan berbagi dengan rekan pendidik dan siswa, memperkaya pengalaman belajar.'
+            description: 'Terhubung, berkolaborasi, dan berbagi dengan rekan pendidik dan siswa, memperkaya pengalaman belajar.',
+            icon: null // Upload via admin panel
           }
         ],
+        sideImage: null, // Upload via admin panel
         isActive: true
       }
     })
     console.log('✅ Why Choose Section seeded')
-
-    // 4. Seed Contact Section (Global)
-    console.log('Seeding Contact Section...')
-    await payloadInstance.create({
-      collection: 'contact-section',
-      data: {
-        title: 'Hubungi Kami!',
-        subtitle: 'Siap Mentransformasi Pendidikan Anda?',
-        description: {
-          root: {
-            type: 'root',
-            children: [
-              {
-                type: 'paragraph',
-                version: 1,
-                children: [
-                  {
-                    type: 'text',
-                    text: 'Punya pertanyaan tentang SiUJI atau butuh solusi khusus? Tim kami siap membantu Anda mendigitalkan proses ujian.',
-                    version: 1
-                  }
-                ]
-              }
-            ],
-            direction: null,
-            format: '',
-            indent: 0,
-            version: 1
-          }
-        },
-        contactInfo: {
-          address: 'Jl. Raya Bandung-Sumedang KM 21, Jatinangor, Sumedang, Jawa Barat 45363',
-          phone: '+62 22 7796 8800',
-          email: 'info@siuji.id',
-          workingHours: 'Senin - Jumat: 09:00 - 18:00 WIB',
-          whatsappNumber: '+62 812 3456 7890'
-        },
-        isActive: true
-      }
-    })
-    console.log('✅ Contact Section seeded')
 
     // 5. Seed Features
     console.log('Seeding Features...')
@@ -149,16 +111,26 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
       {
         title: 'Sistem Ujian Cerdas',
         description: 'Sistem ujian bertenaga AI canggih dengan mekanisme anti-kecurangan dan kemampuan proctoring real-time.',
+        icon: null, // Upload via admin panel
+        image: null, // Upload via admin panel
         position: 'left' as const,
         features: [{ feature: 'AI Proctoring' }, { feature: 'Penilaian Otomatis' }, { feature: 'Randomisasi Soal' }],
-        isActive: true, order: 1
+        ctaText: 'Pelajari Lebih Lanjut',
+        ctaLink: '/features',
+        isActive: true, 
+        order: 1
       },
       {
         title: 'Analitik Komprehensif',
         description: 'Dapatkan wawasan detail tentang kinerja siswa dengan alat analitik dan pelaporan komprehensif.',
+        icon: null, // Upload via admin panel
+        image: null, // Upload via admin panel
         position: 'right' as const,
         features: [{ feature: 'Pelacakan Kinerja' }, { feature: 'Laporan Kustom' }, { feature: 'Visualisasi Data' }],
-        isActive: true, order: 2
+        ctaText: 'Lihat Demo',
+        ctaLink: '/demo',
+        isActive: true, 
+        order: 2
       }
     ];
     for (const feature of featuresData) {
@@ -170,14 +142,28 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
     console.log('Seeding Testimonials...')
     const testimonialsData = [
       {
-        name: 'Dr. Sarah Johnson', position: 'Guru Matematika', school: 'Jakarta International School',
+        name: 'Dr. Sarah Johnson', 
+        position: 'Guru Matematika', 
+        school: 'Jakarta International School',
         content: 'SiUJI telah mengubah cara kami melakukan ujian. Fitur pemantauan real-time memberi saya kepercayaan dalam menjaga integritas akademik.',
-        rating: 5, isActive: true, order: 1
+        rating: 5, 
+        avatar: null, // Upload via admin panel
+        testimonialTitle: 'Transformasi Digital yang Luar Biasa',
+        isActive: true, 
+        order: 1,
+        isFeatured: true
       },
       {
-        name: 'Ahmad Rizki', position: 'Koordinator IT', school: 'SMA Negeri 1 Bandung',
+        name: 'Ahmad Rizki', 
+        position: 'Koordinator IT', 
+        school: 'SMA Negeri 1 Bandung',
         content: 'Platform ini sangat ramah pengguna dan analitik membantu kami memahami kinerja siswa lebih baik dari sebelumnya.',
-        rating: 5, isActive: true, order: 2
+        rating: 5, 
+        avatar: null, // Upload via admin panel
+        testimonialTitle: 'Solusi Terbaik untuk Institusi Pendidikan',
+        isActive: true, 
+        order: 2,
+        isFeatured: false
       }
     ];
     for (const testimonial of testimonialsData) {
@@ -189,19 +175,65 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
     console.log('Seeding Pricing Plans...')
     const pricingPlansData = [
       {
-        name: 'Basic', price: 0, period: 'month' as const, currency: 'idr' as const, description: 'Untuk coba-coba dan penggunaan personal.',
-        features: [{ feature: 'Hingga 50 siswa', isIncluded: true }, { feature: '2 Ujian per bulan', isIncluded: true }, { feature: 'Dukungan Email', isIncluded: true }],
-        ctaText: 'Mulai Gratis', ctaLink: '/register?plan=basic', isActive: true, order: 1
+        name: 'Basic', 
+        price: 0, 
+        period: 'month' as const, 
+        currency: 'idr' as const, 
+        description: 'Untuk coba-coba dan penggunaan personal.',
+        features: [
+          { feature: 'Hingga 50 siswa', isIncluded: true }, 
+          { feature: '2 Ujian per bulan', isIncluded: true }, 
+          { feature: 'Dukungan Email', isIncluded: true }
+        ],
+        ctaText: 'Mulai Gratis', 
+        ctaLink: '/register?plan=basic', 
+        isPopular: false,
+        badge: '',
+        isActive: true, 
+        order: 1,
+        limitations: [
+          { limitation: 'Maksimal 50 siswa per kelas' },
+          { limitation: 'Fitur analitik terbatas' }
+        ]
       },
       {
-        name: 'Pro', price: 500000, period: 'month' as const, currency: 'idr' as const, description: 'Solusi terbaik untuk sekolah dan institusi.',
-        features: [{ feature: 'Siswa tak terbatas', isIncluded: true }, { feature: 'Ujian tak terbatas', isIncluded: true }, { feature: 'AI Proctoring', isIncluded: true }, { feature: 'Dukungan Prioritas', isIncluded: true }],
-        ctaText: 'Pilih Pro', ctaLink: '/register?plan=pro', isPopular: true, badge: 'Paling Populer', isActive: true, order: 2
+        name: 'Pro', 
+        price: 500000, 
+        period: 'month' as const, 
+        currency: 'idr' as const, 
+        description: 'Solusi terbaik untuk sekolah dan institusi.',
+        features: [
+          { feature: 'Siswa tak terbatas', isIncluded: true }, 
+          { feature: 'Ujian tak terbatas', isIncluded: true }, 
+          { feature: 'AI Proctoring', isIncluded: true }, 
+          { feature: 'Dukungan Prioritas', isIncluded: true }
+        ],
+        ctaText: 'Pilih Pro', 
+        ctaLink: '/register?plan=pro', 
+        isPopular: true, 
+        badge: 'Paling Populer', 
+        isActive: true, 
+        order: 2,
+        limitations: []
       },
       {
-        name: 'Enterprise', price: 0, period: 'once' as const, currency: 'idr' as const, description: 'Solusi kustom untuk kebutuhan institusi besar.',
-        features: [{ feature: 'Semua fitur Pro', isIncluded: true }, { feature: 'Server Khusus', isIncluded: true }, { feature: 'Manager Akun Khusus', isIncluded: true }],
-        ctaText: 'Hubungi Sales', ctaLink: '/contact', isActive: true, order: 3
+        name: 'Enterprise', 
+        price: 0, 
+        period: 'once' as const, 
+        currency: 'idr' as const, 
+        description: 'Solusi kustom untuk kebutuhan institusi besar.',
+        features: [
+          { feature: 'Semua fitur Pro', isIncluded: true }, 
+          { feature: 'Server Khusus', isIncluded: true }, 
+          { feature: 'Manager Akun Khusus', isIncluded: true }
+        ],
+        ctaText: 'Hubungi Sales', 
+        ctaLink: '/contact', 
+        isPopular: false,
+        badge: 'Custom',
+        isActive: true, 
+        order: 3,
+        limitations: []
       }
     ];
     for (const plan of pricingPlansData) {
@@ -209,7 +241,7 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
     }
     console.log(`✅ ${pricingPlansData.length} Pricing Plans seeded`);
 
-    // 8. Seed FAQ - Simplified structure for seeding
+    // 8. Seed FAQ - Updated structure for seeding
     console.log('Seeding FAQ...')
     const faqData = [
       {
@@ -237,7 +269,13 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
             version: 1
           }
         },
+        tags: [
+          { tag: 'platform' },
+          { tag: 'ujian online' },
+          { tag: 'pendidikan' }
+        ],
         isActive: true,
+        isFeatured: true,
         order: 1
       },
       {
@@ -265,7 +303,13 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
             version: 1
           }
         },
+        tags: [
+          { tag: 'anti-kecurangan' },
+          { tag: 'proctoring' },
+          { tag: 'keamanan' }
+        ],
         isActive: true,
+        isFeatured: true,
         order: 2
       },
       {
@@ -293,7 +337,13 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
             version: 1
           }
         },
+        tags: [
+          { tag: 'keamanan data' },
+          { tag: 'enkripsi' },
+          { tag: 'privasi' }
+        ],
         isActive: true,
+        isFeatured: false,
         order: 3
       }
     ];
@@ -302,76 +352,29 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
     }
     console.log(`✅ ${faqData.length} FAQs seeded`);
 
-    // 9. Seed Partners
-    console.log('Seeding Partners...')
-    const partnersData = [
-      // NOTE: 'logo' field is omitted as it requires a media ID from an uploaded file.
-      // You can manually add logos from the admin panel after seeding.
-      { name: 'Universitas Pendidikan Digital', type: 'university' as const, website: 'https://upd.ac.id', location: 'Jakarta', isActive: true, order: 1, isFeatured: true },
-      { name: 'SMA Cendekia Bangsa', type: 'school' as const, website: 'https://smacendekia.sch.id', location: 'Bandung', isActive: true, order: 2 }
-    ];
-    for (const partner of partnersData) {
-      await payloadInstance.create({ collection: 'partners', data: partner });
-    }
-    console.log(`✅ ${partnersData.length} Partners seeded`);
-
-    // 10. Seed Platform Availability
-    console.log('Seeding Platform Availability...')
+    // 9. Seed Portfolio Section
+    console.log('Seeding Portfolio Section...')
     await payloadInstance.create({
-      collection: 'platform-availability',
+      collection: 'portfolio-section',
       data: {
-        sectionTitle: 'Kini SIUJI Sudah Tersedia di 3 Platform Berbeda',
-        subtitle: 'Akses ujian online dimana saja dan kapan saja sesuai kebutuhan Anda',
-        platforms: [
-          {
-            name: 'Aplikasi Web',
-            slug: 'web',
-            description: 'Akses penuh SiUJI melalui browser modern di desktop atau laptop Anda dengan pengalaman yang optimal.',
-            mockupImage: null as any, // Placeholder, can be added later via admin
-            isDefault: true,
-            order: 1
-          },
-          {
-            name: 'Android',
-            slug: 'android',
-            description: 'Ikuti ujian dengan mudah dari perangkat Android Anda kapan saja dan dimana saja.',
-            mockupImage: null as any, // Placeholder, can be added later via admin
-            isDefault: false,
-            order: 2
-          },
-          {
-            name: 'iOS',
-            slug: 'ios',
-            description: 'Segera hadir di perangkat iPhone dan iPad Anda untuk pengalaman ujian yang lebih fleksibel.',
-            mockupImage: null as any, // Placeholder, can be added later via admin
-            isDefault: false,
-            order: 3
-          }
-        ],
-        infoBanner: {
-          text: 'Dapatkan akses lengkap ke semua platform SiUJI',
-          buttonLabel: 'Mulai Sekarang',
-          buttonLink: '/register',
-          backgroundColor: '#4CC5BD'
-        },
+        title: 'Dipercaya oleh Institusi Terkemuka',
+        logos: [], // Upload logos via admin panel first
         isActive: true,
-        order: 0
+        order: 1
       }
     });
-    console.log('✅ Platform Availability seeded');
+    console.log('✅ Portfolio Section seeded');
 
     console.log('\n🎉 All collections seeded successfully!')
     console.log('\n📊 Summary:')
     console.log('- Hero Section: ✅')
     console.log('- About Section: ✅')
     console.log('- Why Choose Section: ✅')
-    console.log('- Contact Section: ✅')
     console.log('- Features: ✅')
     console.log('- Testimonials: ✅')
     console.log('- Pricing Plans: ✅')
     console.log('- FAQ: ✅')
-    console.log('- Partners: ✅')
-    console.log('- Platform Availability: ✅')
+    console.log('- Portfolio Section: ✅')
 
   } catch (error) {
     console.error('❌ Error during seeding process:', error)

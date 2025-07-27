@@ -4,7 +4,7 @@ export const FAQ: CollectionConfig = {
   slug: 'faq',
   admin: {
     useAsTitle: 'question',
-    defaultColumns: ['question', 'category', 'isActive', 'order'],
+    defaultColumns: ['question', 'category', 'isActive'],
   },
   access: {
     read: () => true,
@@ -50,23 +50,6 @@ export const FAQ: CollectionConfig = {
       name: 'isActive',
       type: 'checkbox',
       defaultValue: true,
-    },
-    {
-      name: 'isFeatured',
-      type: 'checkbox',
-      defaultValue: false,
-      admin: {
-        description: 'Show this FAQ prominently',
-      },
-    },
-    {
-      name: 'helpfulCount',
-      type: 'number',
-      defaultValue: 0,
-      admin: {
-        readOnly: true,
-        description: 'How many users found this helpful',
-      },
     },
   ],
   defaultSort: 'order',

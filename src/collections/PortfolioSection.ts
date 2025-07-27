@@ -5,7 +5,7 @@ export const PortfolioSection: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     description: 'Portfolio/Partners section content',
-    defaultColumns: ['title', 'category', 'isActive', 'order']
+    defaultColumns: ['title', 'isActive', 'order']
   },
   access: {
     read: () => true,
@@ -15,31 +15,10 @@ export const PortfolioSection: CollectionConfig = {
       name: 'title',
       type: 'text',
       required: true,
-      defaultValue: 'Dipercaya Oleh Institusi Terkemuka',
-    },
-    {
-      name: 'subtitle',
-      type: 'text',
-      label: 'Subtitle',
-      defaultValue: 'Bergabunglah dengan ribuan institusi yang telah mempercayai SiUJI',
-    },
-    {
-      name: 'description',
-      type: 'richText',
-      label: 'Description',
-    },
-    {
-      name: 'category',
-      type: 'select',
-      required: true,
-      options: [
-        { label: 'Universities', value: 'university' },
-        { label: 'Schools', value: 'school' },
-        { label: 'Corporate', value: 'corporate' },
-        { label: 'Government', value: 'government' },
-        { label: 'Training Centers', value: 'training' },
-      ],
-      defaultValue: 'university',
+      defaultValue: 'Trusted by Companies Worldwide',
+      admin: {
+        description: 'Section title displayed above the logos',
+      },
     },
     {
       name: 'logos',
@@ -66,11 +45,6 @@ export const PortfolioSection: CollectionConfig = {
             description: 'Optional: Link to institution website',
           },
         },
-        {
-          name: 'order',
-          type: 'number',
-          defaultValue: 0,
-        },
       ],
     },
     {
@@ -83,7 +57,7 @@ export const PortfolioSection: CollectionConfig = {
       type: 'number',
       defaultValue: 0,
       admin: {
-        description: 'Order of appearance in landing page',
+        description: 'Order of appearance (lower numbers appear first)',
       },
     },
   ],

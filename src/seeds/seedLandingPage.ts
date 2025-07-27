@@ -1,10 +1,10 @@
+import 'dotenv/config'
 import { getPayload } from 'payload'
 import config from '../payload.config.js'
 import { seedLandingPageCollections } from './seedLandingPageCollections.js'
 
 // Debug environment variables
 console.log('🔍 Environment check:')
-console.log('NODE_ENV:', process.env.NODE_ENV || 'not set')
 console.log('PAYLOAD_SECRET:', process.env.PAYLOAD_SECRET ? '✅ Found' : '❌ Missing')
 console.log('DATABASE_URI:', process.env.DATABASE_URI ? '✅ Found' : '❌ Missing')
 
