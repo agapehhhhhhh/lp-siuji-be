@@ -31,6 +31,12 @@ export default buildConfig({
       titleSuffix: '- SiUJI CMS',
     },
     dateFormat: 'dd/MM/yyyy',
+    components: {
+      graphics: {
+        Logo: '/components/payload/Logo',
+        Icon: '/components/payload/Icon',
+      },
+    }
   },
   cors: [
     'http://localhost:5173',

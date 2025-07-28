@@ -21,12 +21,6 @@ export const Features: CollectionConfig = {
       required: true,
     },
     {
-      name: 'icon',
-      type: 'upload',
-      relationTo: 'media',
-      required: false,
-    },
-    {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
@@ -41,28 +35,6 @@ export const Features: CollectionConfig = {
         { label: 'Text Left, Image Right', value: 'right' },
       ],
       defaultValue: 'left',
-    },
-    {
-      name: 'features',
-      type: 'array',
-      label: 'Feature List',
-      fields: [
-        {
-          name: 'feature',
-          type: 'text',
-          required: true,
-        },
-      ],
-    },
-    {
-      name: 'ctaText',
-      type: 'text',
-      label: 'CTA Button Text',
-    },
-    {
-      name: 'ctaLink',
-      type: 'text',
-      label: 'CTA Button Link',
     },
     {
       name: 'isActive',

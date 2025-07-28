@@ -110,27 +110,35 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
     const featuresData = [
       {
         title: 'Sistem Ujian Cerdas',
-        description: 'Sistem ujian bertenaga AI canggih dengan mekanisme anti-kecurangan dan kemampuan proctoring real-time.',
-        icon: null, // Upload via admin panel
+        description: 'Sistem ujian bertenaga AI canggih dengan mekanisme anti-kecurangan dan kemampuan proctoring real-time. Platform ini dilengkapi dengan teknologi monitoring yang memastikan integritas ujian tetap terjaga dengan analisis perilaku siswa secara real-time.',
         image: null, // Upload via admin panel
         position: 'left' as const,
-        features: [{ feature: 'AI Proctoring' }, { feature: 'Penilaian Otomatis' }, { feature: 'Randomisasi Soal' }],
-        ctaText: 'Pelajari Lebih Lanjut',
-        ctaLink: '/features',
         isActive: true, 
         order: 1
       },
       {
         title: 'Analitik Komprehensif',
-        description: 'Dapatkan wawasan detail tentang kinerja siswa dengan alat analitik dan pelaporan komprehensif.',
-        icon: null, // Upload via admin panel
+        description: 'Dapatkan wawasan detail tentang kinerja siswa dengan alat analitik dan pelaporan komprehensif. Fitur ini memberikan visualisasi data yang mudah dipahami untuk membantu pendidik mengambil keputusan yang tepat dalam proses pembelajaran.',
         image: null, // Upload via admin panel
         position: 'right' as const,
-        features: [{ feature: 'Pelacakan Kinerja' }, { feature: 'Laporan Kustom' }, { feature: 'Visualisasi Data' }],
-        ctaText: 'Lihat Demo',
-        ctaLink: '/demo',
         isActive: true, 
         order: 2
+      },
+      {
+        title: 'Keamanan Berlapis',
+        description: 'Sistem keamanan berlapis yang melindungi data ujian dan informasi siswa dengan enkripsi tingkat enterprise. Dilengkapi dengan backup otomatis dan recovery system untuk memastikan data selalu aman dan tersedia.',
+        image: null, // Upload via admin panel
+        position: 'left' as const,
+        isActive: true, 
+        order: 3
+      },
+      {
+        title: 'Interface Ramah Pengguna',
+        description: 'Antarmuka yang intuitif dan mudah digunakan untuk semua kalangan, dari siswa hingga administrator. Desain responsif yang bekerja optimal di berbagai perangkat mulai dari desktop hingga smartphone.',
+        image: null, // Upload via admin panel
+        position: 'right' as const,
+        isActive: true, 
+        order: 4
       }
     ];
     for (const feature of featuresData) {

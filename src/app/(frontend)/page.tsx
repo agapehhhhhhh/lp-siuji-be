@@ -33,19 +33,6 @@ export default async function HomePage() {
       </div>
 
       <div className="container">
-        {/* Header */}
-        <header className="header">
-          <div className="logo">
-            <span className="logo-text">SiUJI</span>
-            <span className="logo-subtitle">CMS Portal</span>
-          </div>
-          <nav className="nav-links">
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#help">Help</a>
-          </nav>
-        </header>
-
         {/* Main Content */}
         <main className="main-content">
           <div className="hero-section">
@@ -118,58 +105,7 @@ export default async function HomePage() {
               </div>
             </div>
           </div>
-
-          {/* Features Grid */}
-          <section className="features-section" id="features">
-            <h2>Fitur Unggulan CMS</h2>
-            <div className="features-grid">
-              <div className="feature-card">
-                <div className="feature-icon">🎨</div>
-                <h3>Visual Editor</h3>
-                <p>Editor visual yang mudah digunakan untuk mengelola konten tanpa coding</p>
-              </div>
-              <div className="feature-card">
-                <div className="feature-icon">📱</div>
-                <h3>Responsive</h3>
-                <p>Tampilan yang optimal di semua device dari desktop hingga mobile</p>
-              </div>
-              <div className="feature-card">
-                <div className="feature-icon">🔒</div>
-                <h3>Secure</h3>
-                <p>Keamanan tingkat enterprise dengan autentikasi dan otorisasi lengkap</p>
-              </div>
-              <div className="feature-card">
-                <div className="feature-icon">⚡</div>
-                <h3>Fast Performance</h3>
-                <p>Performa cepat dengan caching dan optimasi database yang canggih</p>
-              </div>
-            </div>
-          </section>
         </main>
-
-        {/* Footer */}
-        <footer className="footer">
-          <div className="footer-content">
-            <div className="footer-section">
-              <h4>SiUJI CMS</h4>
-              <p>Platform manajemen konten untuk sistem ujian online modern</p>
-            </div>
-            <div className="footer-section">
-              <h4>Quick Links</h4>
-              <a href={payloadConfig.routes.admin}>Admin Panel</a>
-              <a href="/api">API</a>
-              <a href="/api/graphql-playground">GraphQL</a>
-            </div>
-            <div className="footer-section">
-              <h4>Documentation</h4>
-              <a href="https://payloadcms.com/docs" target="_blank" rel="noopener">Payload Docs</a>
-              <a href="https://github.com/agapehhhhhhh/Landing_Page_SiUJI" target="_blank" rel="noopener">GitHub</a>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>&copy; 2025 SiUJI Platform. Built with ❤️ using Payload CMS</p>
-          </div>
-        </footer>
       </div>
     </div>
   )

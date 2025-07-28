@@ -314,8 +314,6 @@ export interface Feature {
         id?: string | null;
       }[]
     | null;
-  ctaText?: string | null;
-  ctaLink?: string | null;
   isActive?: boolean | null;
   /**
    * Order of appearance on the page
@@ -422,10 +420,6 @@ export interface Faq {
       }[]
     | null;
   isActive?: boolean | null;
-  /**
-   * Show this FAQ prominently
-   */
-  isFeatured?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -663,8 +657,6 @@ export interface FeaturesSelect<T extends boolean = true> {
         feature?: T;
         id?: T;
       };
-  ctaText?: T;
-  ctaLink?: T;
   isActive?: T;
   order?: T;
   updatedAt?: T;
@@ -735,7 +727,6 @@ export interface FaqSelect<T extends boolean = true> {
         id?: T;
       };
   isActive?: T;
-  isFeatured?: T;
   updatedAt?: T;
   createdAt?: T;
 }
