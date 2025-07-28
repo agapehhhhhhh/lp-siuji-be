@@ -86,20 +86,22 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
           {
             title: 'Pemantauan Real-Time',
             description: 'Rangkul kekuatan pemantauan real-time dan kendalikan integritas ujian dengan teknologi proctoring canggih.',
-            icon: null // Upload via admin panel
+            icon: null, // Upload via admin panel
+            sideImage: null // Upload via admin panel
           },
           {
             title: 'Akses Seumur Hidup',
             description: 'Materi dan hasil ujian tersimpan aman dan dapat diakses kapan saja, mendukung pembelajaran berkelanjutan.',
-            icon: null // Upload via admin panel
+            icon: null, // Upload via admin panel
+            sideImage: null // Upload via admin panel
           },
           {
             title: 'Komunitas Besar',
             description: 'Terhubung, berkolaborasi, dan berbagi dengan rekan pendidik dan siswa, memperkaya pengalaman belajar.',
-            icon: null // Upload via admin panel
+            icon: null, // Upload via admin panel
+            sideImage: null // Upload via admin panel
           }
         ],
-        sideImage: null, // Upload via admin panel
         isActive: true
       }
     })

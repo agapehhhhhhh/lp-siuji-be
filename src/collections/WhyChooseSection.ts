@@ -44,14 +44,15 @@ export const WhyChooseSection: CollectionConfig = {
           relationTo: 'media',
           label: 'Point Icon',
         },
+        {
+          name: 'sideImage',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Side Image/Illustration',
+        },
       ],
     },
-    {
-      name: 'sideImage',
-      type: 'upload',
-      relationTo: 'media',
-      label: 'Side Image/Illustration',
-    },
+
     {
       name: 'isActive',
       type: 'checkbox',

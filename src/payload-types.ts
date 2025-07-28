@@ -258,10 +258,10 @@ export interface WhyChooseSection {
         title: string;
         description: string;
         icon?: (number | null) | Media;
+        sideImage?: (number | null) | Media;
         id?: string | null;
       }[]
     | null;
-  sideImage?: (number | null) | Media;
   isActive?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -608,9 +608,9 @@ export interface WhyChooseSectionSelect<T extends boolean = true> {
         title?: T;
         description?: T;
         icon?: T;
+        sideImage?: T;
         id?: T;
       };
-  sideImage?: T;
   isActive?: T;
   updatedAt?: T;
   createdAt?: T;

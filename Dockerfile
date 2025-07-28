@@ -11,7 +11,7 @@ RUN npm install -g nodemon
 COPY package*.json ./
 
 # Install all dependencies (termasuk devDependencies)
-RUN npm install --legacy-peer-deps
+RUN npm install
 
 # Copy source code
 COPY . .
