@@ -29,7 +29,6 @@ export const PricingPlans: CollectionConfig = {
       options: [
         { label: 'Monthly', value: 'month' },
         { label: 'Yearly', value: 'year' },
-        { label: 'One-time', value: 'once' },
       ],
       defaultValue: 'month',
     },
@@ -38,11 +37,9 @@ export const PricingPlans: CollectionConfig = {
       type: 'select',
       required: true,
       options: [
-        { label: 'USD ($)', value: 'usd' },
         { label: 'IDR (Rp)', value: 'idr' },
-        { label: 'EUR (€)', value: 'eur' },
       ],
-      defaultValue: 'usd',
+      defaultValue: 'idr',
     },
     {
       name: 'description',

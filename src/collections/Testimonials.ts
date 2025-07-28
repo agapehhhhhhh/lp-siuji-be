@@ -4,7 +4,7 @@ export const Testimonials: CollectionConfig = {
   slug: 'testimonials',
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'position', 'school', 'rating', 'isActive'],
+    defaultColumns: ['name', 'position', 'school','isActive'],
   },
   access: {
     read: () => true,
@@ -32,16 +32,6 @@ export const Testimonials: CollectionConfig = {
       type: 'textarea',
       required: true,
       label: 'Testimonial Content',
-    },
-    {
-      name: 'rating',
-      type: 'number',
-      min: 1,
-      max: 5,
-      defaultValue: 5,
-      admin: {
-        description: 'Rating from 1 to 5 stars',
-      },
     },
     {
       name: 'avatar',

@@ -325,10 +325,6 @@ export interface Testimonial {
   position: string;
   school?: string | null;
   content: string;
-  /**
-   * Rating from 1 to 5 stars
-   */
-  rating?: number | null;
   avatar?: (number | null) | Media;
   testimonialTitle?: string | null;
   isActive?: boolean | null;
@@ -351,8 +347,8 @@ export interface PricingPlan {
   id: number;
   name: string;
   price: number;
-  period: 'month' | 'year' | 'once';
-  currency: 'usd' | 'idr' | 'eur';
+  period: 'month' | 'year';
+  currency: 'idr';
   description: string;
   features: {
     feature: string;
@@ -657,7 +653,6 @@ export interface TestimonialsSelect<T extends boolean = true> {
   position?: T;
   school?: T;
   content?: T;
-  rating?: T;
   avatar?: T;
   testimonialTitle?: T;
   isActive?: T;

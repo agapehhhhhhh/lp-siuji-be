@@ -156,7 +156,6 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
         position: 'Guru Matematika', 
         school: 'Jakarta International School',
         content: 'SiUJI telah mengubah cara kami melakukan ujian. Fitur pemantauan real-time memberi saya kepercayaan dalam menjaga integritas akademik.',
-        rating: 5, 
         avatar: null, // Upload via admin panel
         testimonialTitle: 'Transformasi Digital yang Luar Biasa',
         isActive: true, 
@@ -168,7 +167,6 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
         position: 'Koordinator IT', 
         school: 'SMA Negeri 1 Bandung',
         content: 'Platform ini sangat ramah pengguna dan analitik membantu kami memahami kinerja siswa lebih baik dari sebelumnya.',
-        rating: 5, 
         avatar: null, // Upload via admin panel
         testimonialTitle: 'Solusi Terbaik untuk Institusi Pendidikan',
         isActive: true, 
