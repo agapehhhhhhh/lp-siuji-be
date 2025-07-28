@@ -305,15 +305,8 @@ export interface Feature {
   id: number;
   title: string;
   description: string;
-  icon?: (number | null) | Media;
   image?: (number | null) | Media;
   position: 'left' | 'right';
-  features?:
-    | {
-        feature: string;
-        id?: string | null;
-      }[]
-    | null;
   isActive?: boolean | null;
   /**
    * Order of appearance on the page
@@ -648,15 +641,8 @@ export interface PortfolioSectionSelect<T extends boolean = true> {
 export interface FeaturesSelect<T extends boolean = true> {
   title?: T;
   description?: T;
-  icon?: T;
   image?: T;
   position?: T;
-  features?:
-    | T
-    | {
-        feature?: T;
-        id?: T;
-      };
   isActive?: T;
   order?: T;
   updatedAt?: T;
