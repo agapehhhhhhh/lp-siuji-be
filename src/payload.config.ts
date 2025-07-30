@@ -32,6 +32,9 @@ export default buildConfig({
     },
     dateFormat: 'dd/MM/yyyy',
     components: {
+      actions: ['/components/header/CustomActions'],
+      afterNavLinks: ['/components/sidebar/CustomNavLinks'],
+      beforeDashboard: ['/components/WelcomeMessage'],
       graphics: {
         Logo: '/components/payload/Logo',
         Icon: '/components/payload/Icon',
