@@ -62,7 +62,20 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
             version: 1
           }
         },
-        slides: [], // Upload images via admin panel first, then add slides
+        slides: [
+          {
+            title: 'For Teacher',
+            description: 'SIUJI adalah platform yang memungkinkan pendidik membuat kelas online dimana mereka dapat menyimpan materi pembelajaran, mengelola tugas, kuis dan ujian dengan mudah.',
+            images: [], // Upload via admin panel
+            order: 0
+          },
+          {
+            title: 'For Student', 
+            description: 'SIUJI memberikan pengalaman belajar yang interaktif dan mudah digunakan untuk mengakses materi, mengerjakan tugas, dan mengikuti ujian online.',
+            images: [], // Upload via admin panel
+            order: 1
+          }
+        ],
         rotatingImages: [], // Upload via admin panel
         carouselConfig: {
           autoSlide: true,
@@ -227,7 +240,7 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
       {
         name: 'Enterprise', 
         price: 0, 
-        period: 'once' as const, 
+        period: 'year' as const, 
         currency: 'idr' as const, 
         description: 'Solusi kustom untuk kebutuhan institusi besar.',
         features: [

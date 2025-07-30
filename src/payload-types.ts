@@ -217,7 +217,14 @@ export interface AboutSection {
     | {
         title: string;
         description: string;
-        image: number | Media;
+        images?:
+          | {
+              image: number | Media;
+              alt?: string | null;
+              order?: number | null;
+              id?: string | null;
+            }[]
+          | null;
         order?: number | null;
         id?: string | null;
       }[]
@@ -567,7 +574,14 @@ export interface AboutSectionSelect<T extends boolean = true> {
     | {
         title?: T;
         description?: T;
-        image?: T;
+        images?:
+          | T
+          | {
+              image?: T;
+              alt?: T;
+              order?: T;
+              id?: T;
+            };
         order?: T;
         id?: T;
       };

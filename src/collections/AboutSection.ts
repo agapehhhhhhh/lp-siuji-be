@@ -30,14 +30,15 @@ export const AboutSection: CollectionConfig = {
     {
       name: 'slides',
       type: 'array',
-      label: 'Carousel Slides',
-      minRows: 1,
+      label: 'Carousel Slides (For Teacher/Student)',
+      minRows: 2,
+      maxRows: 3,
       fields: [
         {
           name: 'title',
           type: 'text',
           required: true,
-          label: 'Slide Title',
+          label: 'Slide Title (e.g., "For Teacher", "For Student")',
         },
         {
           name: 'description',
@@ -46,11 +47,29 @@ export const AboutSection: CollectionConfig = {
           label: 'Slide Description',
         },
         {
-          name: 'image',
-          type: 'upload',
-          relationTo: 'media',
-          label: 'Slide Image',
-          required: true,
+          name: 'images',
+          type: 'array',
+          label: 'Slide Images (for stacking effect)',
+          minRows: 1,
+          maxRows: 4,
+          fields: [
+            {
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
+              required: true,
+            },
+            {
+              name: 'alt',
+              type: 'text',
+              label: 'Alt Text',
+            },
+            {
+              name: 'order',
+              type: 'number',
+              defaultValue: 0,
+            },
+          ],
         },
         {
           name: 'order',
