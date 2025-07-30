@@ -109,7 +109,7 @@ export default function WelcomeMessage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-4xl font-bold mb-2 flex items-center gap-3">
-              🎓 SiUJI Content Management System
+               SiUJI Content Management System
             </h1>
             <p className="text-blue-100 text-lg mb-4">
               Kelola konten Landing Page SiUJI dengan mudah dan efisien
@@ -119,10 +119,6 @@ export default function WelcomeMessage() {
               <span className="bg-white/20 px-3 py-1 rounded-full">🚀 {systemInfo.cms}</span>
               <span className="bg-white/20 px-3 py-1 rounded-full">🗄️ {systemInfo.database}</span>
             </div>
-          </div>
-          <div className="text-right">
-            <div className="text-3xl mb-2">⚡</div>
-            <div className="text-sm text-blue-100">Status: Online</div>
           </div>
         </div>
       </div>
@@ -136,19 +132,19 @@ export default function WelcomeMessage() {
           <div>
             <h4 className="font-semibold text-amber-700 mb-2">🎯 Content Best Practices</h4>
             <ul className="text-amber-700 space-y-1">
-              <li>• Upload gambar dengan resolusi optimal (WebP format)</li>
-              <li>• Gunakan deskripsi yang SEO-friendly</li>
-              <li>• Atur order konten sesuai prioritas</li>
-              <li>• Preview sebelum publish</li>
+              <li>Upload gambar dengan resolusi optimal (WebP format)</li>
+              <li>Gunakan deskripsi yang SEO-friendly</li>
+              <li>Atur order konten sesuai prioritas</li>
+              <li>Preview sebelum publish</li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold text-amber-700 mb-2">🔧 Development Workflow</h4>
             <ul className="text-amber-700 space-y-1">
-              <li>• Test perubahan di development</li>
-              <li>• Sync dengan frontend Vue.js</li>
-              <li>• Backup data sebelum update besar</li>
-              <li>• Monitor performance API</li>
+              <li>Test perubahan di development</li>
+              <li>Sync dengan frontend Vue.js</li>
+              <li>Backup data sebelum update besar</li>
+              <li>Monitor performance API</li>
             </ul>
           </div>
         </div>

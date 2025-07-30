@@ -32,14 +32,6 @@ export default function CustomNavLinks() {
           </div>
         </div>
       </div>
-
-      {/* System Status */}
-      <div className="px-3">
-        <div className="flex items-center justify-center text-xs text-gray-500">
-          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2"></div>
-          <span>System Online</span>
-        </div>
-      </div>
     </div>
   )
 }
