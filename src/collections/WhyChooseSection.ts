@@ -17,11 +17,6 @@ export const WhyChooseSection: CollectionConfig = {
       defaultValue: 'Why Choose Us?',
     },
     {
-      name: 'subtitle',
-      type: 'text',
-      label: 'Subtitle',
-    },
-    {
       name: 'points',
       type: 'array',
       label: 'Value Proposition Points',

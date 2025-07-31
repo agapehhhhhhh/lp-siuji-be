@@ -18,11 +18,6 @@ export const AboutSection: CollectionConfig = {
       defaultValue: 'What is SIUJI?',
     },
     {
-      name: 'subtitle',
-      type: 'text',
-      label: 'Subtitle',
-    },
-    {
       name: 'description',
       type: 'richText',
       label: 'Main Description',
