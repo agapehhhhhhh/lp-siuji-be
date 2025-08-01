@@ -84,7 +84,6 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
       collection: 'about-section',
       data: {
         title: 'Apa itu SIUJI?',
-        subtitle: 'Solusi Pendidikan Digital Lengkap Anda',
         description: {
           root: {
             type: 'root',
@@ -154,7 +153,6 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
       collection: 'why-choose-section',
       data: {
         title: 'Mengapa Memilih Kami?',
-        subtitle: 'Rasakan Masa Depan Pendidikan Digital',
         points: [
           {
             title: 'Pemantauan Real-Time',

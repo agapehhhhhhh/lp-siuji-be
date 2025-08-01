@@ -214,7 +214,6 @@ export interface HeroSection {
 export interface AboutSection {
   id: number;
   title: string;
-  subtitle?: string | null;
   description?: {
     root: {
       type: string;
@@ -280,7 +279,6 @@ export interface AboutSection {
 export interface WhyChooseSection {
   id: number;
   title: string;
-  subtitle?: string | null;
   points?:
     | {
         title: string;
@@ -625,7 +623,6 @@ export interface HeroSectionSelect<T extends boolean = true> {
  */
 export interface AboutSectionSelect<T extends boolean = true> {
   title?: T;
-  subtitle?: T;
   description?: T;
   slides?:
     | T
@@ -669,7 +666,6 @@ export interface AboutSectionSelect<T extends boolean = true> {
  */
 export interface WhyChooseSectionSelect<T extends boolean = true> {
   title?: T;
-  subtitle?: T;
   points?:
     | T
     | {
