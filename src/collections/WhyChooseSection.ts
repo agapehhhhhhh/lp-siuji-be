@@ -6,9 +6,15 @@ export const WhyChooseSection: CollectionConfig = {
     useAsTitle: 'title',
     description: `
       Koleksi ini berisi konten untuk section "Mengapa Memilih Kami" pada landing page.
-      Anda dapat mengelola judul, subjudul, deskripsi, dan gambar latar belakang.
-      Setiap elemen dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+      
+      **Panduan Upload Gambar:**
+      - Icon: Gunakan gambar persegi (1:1), ukuran minimal 200x200px, pilih kategori "Why Choose Icon"
+      - Side Image: Gunakan gambar landscape (16:9), ukuran minimal 800x450px, pilih kategori "Feature Image"
+      
+      Anda dapat mengatur judul, subtitle, poin-poin keunggulan, dan gambar pendukung.
+      Setiap perubahan akan langsung tampil di frontend section "Why Choose Us".
     `,
+    defaultColumns: ['title', 'isActive']
   },
   access: {
     read: () => true,
@@ -42,12 +48,24 @@ export const WhyChooseSection: CollectionConfig = {
           type: 'upload',
           relationTo: 'media',
           label: 'Point Icon',
+          admin: {
+            description: 'Upload gambar persegi (1:1) untuk icon. Pilih kategori "Why Choose Icon" saat upload.',
+          },
+          filterOptions: {
+            category: { in: ['why-choose-icon', 'general'] }
+          }
         },
         {
           name: 'sideImage',
           type: 'upload',
           relationTo: 'media',
           label: 'Side Image/Illustration',
+          admin: {
+            description: 'Upload gambar landscape (16:9) untuk ilustrasi. Pilih kategori "Feature Image" saat upload.',
+          },
+          filterOptions: {
+            category: { in: ['feature-image', 'general'] }
+          }
         },
       ],
     },

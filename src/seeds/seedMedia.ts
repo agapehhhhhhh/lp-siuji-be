@@ -7,6 +7,7 @@ export type MediaSeedItem = {
   key: string
   file: string
   alt?: string
+  category?: "avatar" | "general" | "why-choose-icon" | "hero-ornament" | "feature-image" | "logo" | "about-image" | "portfolio-logo"
 }
 
 export async function seedMediaFiles(
@@ -59,6 +60,7 @@ export async function seedMediaFiles(
         },
         data: {
           alt: item.alt ?? filename,
+          category: item.category ?? 'general',
         },
       })
 

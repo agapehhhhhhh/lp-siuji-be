@@ -26,15 +26,15 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
     // import { seedMediaFiles } from './utils/seedMedia'
 
     let mediaMap = await seedMediaFiles(payloadInstance, [
-      { key: 'book',    file: 'src/seeds/assets/book-floating.png',    alt: 'Book Floating' },
-      { key: 'bookpen', file: 'src/seeds/assets/bookpen-floating.png', alt: 'Book & Pen Floating' },
-      { key: 'pen',     file: 'src/seeds/assets/pen-floating.png',     alt: 'Pen Floating' },
-      { key: 'pencil',  file: 'src/seeds/assets/pencil-floating.png',  alt: 'Pencil Floating' },
-      { key: 'score',   file: 'src/seeds/assets/score-floating.png',   alt: 'Score Floating' },
-      { key: 'realtime', file: 'src/seeds/assets/pemantauan-realtime.png', alt: 'Realtime' },
-      { key: 'akses',    file: 'src/seeds/assets/akses-seumur-hidup.png',    alt: 'Akses' },
-      { key: 'komunitas',    file: 'src/seeds/assets/komunitas-besar.png',    alt: 'Komunitas' },
-      { key: 'skalabilitas',    file: 'src/seeds/assets/skalabilitas.png',    alt: 'Skalabilitas' },
+      { key: 'book',    file: 'src/seeds/assets/book-floating.png',    alt: 'Book Floating', category: 'hero-ornament' },
+      { key: 'bookpen', file: 'src/seeds/assets/bookpen-floating.png', alt: 'Book & Pen Floating', category: 'hero-ornament' },
+      { key: 'pen',     file: 'src/seeds/assets/pen-floating.png',     alt: 'Pen Floating', category: 'hero-ornament' },
+      { key: 'pencil',  file: 'src/seeds/assets/pencil-floating.png',  alt: 'Pencil Floating', category: 'hero-ornament' },
+      { key: 'score',   file: 'src/seeds/assets/score-floating.png',   alt: 'Score Floating', category: 'hero-ornament' },
+      { key: 'realtime', file: 'src/seeds/assets/pemantauan-realtime.png', alt: 'Pemantauan Real-Time', category: 'why-choose-icon' },
+      { key: 'akses',    file: 'src/seeds/assets/akses-seumur-hidup.png',    alt: 'Akses Seumur Hidup', category: 'feature-image' },
+      { key: 'komunitas',    file: 'src/seeds/assets/komunitas-besar.png',    alt: 'Komunitas Besar', category: 'why-choose-icon' },
+      { key: 'skalabilitas',    file: 'src/seeds/assets/skalabilitas.png',    alt: 'Skalabilitas Teruji', category: 'feature-image' },
     ])
 
     // Fallback kalau file salah ketik: score-floating.png
@@ -56,19 +56,46 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
       return out
     }
 
+    // Create a helper function to safely convert media IDs
+    const safeMediaId = (mediaId: string | undefined): number | null => {
+      if (!mediaId) return null;
+      const numId = Number(mediaId);
+      return isNaN(numId) ? null : numId;
+    };
+
     const heroVariants = [
       {
         title: 'Ujian Online Aman, Skala Besar, dan Andal',
         subtitle: 'AI Proctoring, Lockdown Browser, dan Analitik Siap Produksi',
         ctaText: 'Coba Demo',
-        heroImage: mediaMap['bookpen'] ?? null,
+        heroImage: safeMediaId(mediaMap['bookpen']), // Convert to number
         isActive: false,
         ornaments: [
-          ...(mediaMap['pen']   ? [{ name: 'Pen Accent',   image: mediaMap['pen'],   position: 'top-center' }] : []),
-          ...(mediaMap['score'] ? [{ name: 'Score Accent', image: mediaMap['score'], position: 'bottom-right' }] : []),
-          ...(mediaMap['book'] ? [{ name: 'Book Accent', image: mediaMap['book'], position: 'left-center' }] : []),
-          ...(mediaMap['pencil'] ? [{ name: 'Pencil Accent', image: mediaMap['pencil'], position: 'right-center' }] : []),
-          ...(mediaMap['bookpen'] ? [{ name: 'Book & Pen Accent', image: mediaMap['bookpen'], position: 'center' }] : []),
+          ...(mediaMap['pen'] ? [{ 
+            name: 'Pen Accent', 
+            image: safeMediaId(mediaMap['pen']), // Convert to number
+            position: 'top-center' 
+          }] : []),
+          ...(mediaMap['score'] ? [{ 
+            name: 'Score Accent', 
+            image: safeMediaId(mediaMap['score']), // Convert to number
+            position: 'bottom-right' 
+          }] : []),
+          ...(mediaMap['book'] ? [{ 
+            name: 'Book Accent', 
+            image: safeMediaId(mediaMap['book']), // Convert to number
+            position: 'left-center' 
+          }] : []),
+          ...(mediaMap['pencil'] ? [{ 
+            name: 'Pencil Accent', 
+            image: safeMediaId(mediaMap['pencil']), // Convert to number
+            position: 'right-center' 
+          }] : []),
+          ...(mediaMap['bookpen'] ? [{ 
+            name: 'Book & Pen Accent', 
+            image: safeMediaId(mediaMap['bookpen']), // Convert to number
+            position: 'center' 
+          }] : []),
         ],
       },
     ]
@@ -156,31 +183,27 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
         points: [
           {
             title: 'Pemantauan Real-Time',
-            description:
-              'Rangkul kekuatan pemantauan real-time dan kendalikan integritas ujian dengan teknologi proctoring canggih.',
-            icon: mediaMap['realtime'] ? isNaN(Number(mediaMap['realtime'])) ? null : Number(mediaMap['realtime']) : null,
-            sideImage: mediaMap['realtime'] ? isNaN(Number(mediaMap['realtime'])) ? null : Number(mediaMap['realtime']) : null,
+            description: 'Rangkul kekuatan pemantauan real-time dan kendalikan integritas ujian dengan teknologi proctoring canggih.',
+            icon: safeMediaId(mediaMap['realtime']),
+            sideImage: safeMediaId(mediaMap['realtime']),
           },
           {
             title: 'Akses Seumur Hidup',
-            description:
-              'Materi dan hasil ujian tersimpan aman dan dapat diakses kapan saja, mendukung pembelajaran berkelanjutan.',
-            icon: mediaMap['akses'] ? isNaN(Number(mediaMap['akses'])) ? null : Number(mediaMap['akses']) : null,
-            sideImage: mediaMap['akses'] ? isNaN(Number(mediaMap['akses'])) ? null : Number(mediaMap['akses']) : null,
+            description: 'Materi dan hasil ujian tersimpan aman dan dapat diakses kapan saja, mendukung pembelajaran berkelanjutan.',
+            icon: safeMediaId(mediaMap['akses']),
+            sideImage: safeMediaId(mediaMap['akses']),
           },
           {
             title: 'Komunitas Besar',
-            description:
-              'Terhubung, berkolaborasi, dan berbagi dengan rekan pendidik dan siswa, memperkaya pengalaman belajar.',
-            icon: mediaMap['komunitas'] ? isNaN(Number(mediaMap['komunitas'])) ? null : Number(mediaMap['komunitas']) : null,
-            sideImage: mediaMap['komunitas'] ? isNaN(Number(mediaMap['komunitas'])) ? null : Number(mediaMap['komunitas']) : null,
+            description: 'Terhubung, berkolaborasi, dan berbagi dengan rekan pendidik dan siswa, memperkaya pengalaman belajar.',
+            icon: safeMediaId(mediaMap['komunitas']),
+            sideImage: safeMediaId(mediaMap['komunitas']),
           },
           {
             title: 'Skalabilitas Teruji',
-            description:
-              'Arsitektur siap skala mendukung puluhan ribu peserta ujian paralel.',
-            icon: mediaMap['skalabilitas'] ? isNaN(Number(mediaMap['skalabilitas'])) ? null : Number(mediaMap['skalabilitas']) : null,
-            sideImage: mediaMap['skalabilitas'] ? isNaN(Number(mediaMap['skalabilitas'])) ? null : Number(mediaMap['skalabilitas']) : null,
+            description: 'Arsitektur siap skala mendukung puluhan ribu peserta ujian paralel.',
+            icon: safeMediaId(mediaMap['skalabilitas']),
+            sideImage: safeMediaId(mediaMap['skalabilitas']),
           },
         ],
         isActive: true,

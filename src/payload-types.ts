@@ -77,6 +77,7 @@ export interface Config {
     testimonials: Testimonial;
     'pricing-plans': PricingPlan;
     faq: Faq;
+    'contact-messages': ContactMessage;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -93,6 +94,7 @@ export interface Config {
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     'pricing-plans': PricingPlansSelect<false> | PricingPlansSelect<true>;
     faq: FaqSelect<false> | FaqSelect<true>;
+    'contact-messages': ContactMessagesSelect<false> | ContactMessagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -154,12 +156,40 @@ export interface User {
   password?: string | null;
 }
 /**
+ *
+ *       Koleksi media untuk mengelola semua gambar dan file yang digunakan di landing page.
+ *
+ *       **Panduan Upload:**
+ *       - Why Choose Icon: Gambar persegi (1:1), minimal 200x200px
+ *       - Hero Ornament: Gambar persegi (1:1), minimal 150x150px
+ *       - Feature Image: Gambar landscape (16:9), minimal 800x450px
+ *       - Avatar: Gambar persegi (1:1), minimal 150x150px
+ *       - Logo: Format PNG/SVG dengan background transparan
+ *
+ *       Pilih kategori yang sesuai agar gambar dapat difilter dengan mudah di section lain.
+ *
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
   id: number;
+  /**
+   * Deskripsi gambar untuk aksesibilitas (SEO)
+   */
   alt: string;
+  /**
+   * Kategori membantu filtering gambar di section tertentu
+   */
+  category:
+    | 'general'
+    | 'why-choose-icon'
+    | 'hero-ornament'
+    | 'feature-image'
+    | 'avatar'
+    | 'logo'
+    | 'about-image'
+    | 'portfolio-logo';
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -171,6 +201,56 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+  sizes?: {
+    'why-choose-icon'?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    'hero-ornament'?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    'feature-image'?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    avatar?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    logo?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  *
@@ -269,8 +349,13 @@ export interface AboutSection {
 /**
  *
  *       Koleksi ini berisi konten untuk section "Mengapa Memilih Kami" pada landing page.
- *       Anda dapat mengelola judul, subjudul, deskripsi, dan gambar latar belakang.
- *       Setiap elemen dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+ *
+ *       **Panduan Upload Gambar:**
+ *       - Icon: Gunakan gambar persegi (1:1), ukuran minimal 200x200px, pilih kategori "Why Choose Icon"
+ *       - Side Image: Gunakan gambar landscape (16:9), ukuran minimal 800x450px, pilih kategori "Feature Image"
+ *
+ *       Anda dapat mengatur judul, subtitle, poin-poin keunggulan, dan gambar pendukung.
+ *       Setiap perubahan akan langsung tampil di frontend section "Why Choose Us".
  *
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -283,7 +368,13 @@ export interface WhyChooseSection {
     | {
         title: string;
         description: string;
+        /**
+         * Upload gambar persegi (1:1) untuk icon. Pilih kategori "Why Choose Icon" saat upload.
+         */
         icon?: (number | null) | Media;
+        /**
+         * Upload gambar landscape (16:9) untuk ilustrasi. Pilih kategori "Feature Image" saat upload.
+         */
         sideImage?: (number | null) | Media;
         id?: string | null;
       }[]
@@ -468,6 +559,59 @@ export interface Faq {
   createdAt: string;
 }
 /**
+ *
+ *       Koleksi ini berisi pesan dari form "Contact Us" di landing page.
+ *       Setiap kali ada pengunjung yang mengisi form kontak, data akan tersimpan di sini
+ *       dan email notifikasi otomatis akan dikirim ke admin dan user.
+ *
+ *       Admin dapat:
+ *       - Melihat semua pesan masuk
+ *       - Mengubah status pesan (New, In Progress, Resolved)
+ *       - Menambahkan catatan internal
+ *       - Email otomatis dikirim ke admin dan user
+ *
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-messages".
+ */
+export interface ContactMessage {
+  id: number;
+  name: string;
+  phone: string;
+  email: string;
+  message: string;
+  /**
+   * Track the status of this contact message
+   */
+  status?: ('new' | 'in-progress' | 'resolved') | null;
+  /**
+   * Internal notes for admin use only
+   */
+  adminNotes?: string | null;
+  source?: string | null;
+  /**
+   * Browser/device information
+   */
+  userAgent?: string | null;
+  ipAddress?: string | null;
+  /**
+   * Indicates if email notifications were sent successfully
+   */
+  emailSent?: boolean | null;
+  /**
+   * Detail pengiriman email
+   */
+  emailDetails?: {
+    adminEmailSent?: boolean | null;
+    userEmailSent?: boolean | null;
+    adminMessageId?: string | null;
+    userMessageId?: string | null;
+    emailSentAt?: string | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -513,6 +657,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'faq';
         value: number | Faq;
+      } | null)
+    | ({
+        relationTo: 'contact-messages';
+        value: number | ContactMessage;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -584,6 +732,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  category?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -595,6 +744,70 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+  sizes?:
+    | T
+    | {
+        'why-choose-icon'?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        'hero-ornament'?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        'feature-image'?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        avatar?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        logo?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -776,6 +989,33 @@ export interface FaqSelect<T extends boolean = true> {
         id?: T;
       };
   isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-messages_select".
+ */
+export interface ContactMessagesSelect<T extends boolean = true> {
+  name?: T;
+  phone?: T;
+  email?: T;
+  message?: T;
+  status?: T;
+  adminNotes?: T;
+  source?: T;
+  userAgent?: T;
+  ipAddress?: T;
+  emailSent?: T;
+  emailDetails?:
+    | T
+    | {
+        adminEmailSent?: T;
+        userEmailSent?: T;
+        adminMessageId?: T;
+        userMessageId?: T;
+        emailSentAt?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

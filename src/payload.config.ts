@@ -17,6 +17,7 @@ import { Features  } from './collections/Features'
 import { Testimonials } from './collections/Testimonials'
 import { PricingPlans } from './collections/PricingPlans'
 import { FAQ } from './collections/FrequentlyAskedQuestion'
+import ContactMessages from './collections/ContactMessages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -42,16 +43,16 @@ export default buildConfig({
     }
   },
   cors: [
-    'http://localhost:5173',
-    'http://localhost:3000',
+    process.env.FRONTEND_URL || 'http://localhost:5173',
+    process.env.SERVER_URL || 'http://localhost:3000',
     'http://localhost:8080',
     'http://127.0.0.1:5173',
     'http://127.0.0.1:3000',
     'http://127.0.0.1:8080'
   ],
   csrf: [
-    'http://localhost:5173',
-    'http://localhost:3000',
+    process.env.FRONTEND_URL || 'http://localhost:5173',
+    process.env.SERVER_URL || 'http://localhost:3000',
     'http://localhost:8080',
     'http://127.0.0.1:5173',
     'http://127.0.0.1:3000',
@@ -68,7 +69,9 @@ export default buildConfig({
     Features, 
     Testimonials, 
     PricingPlans, 
-    FAQ
+    FAQ,
+    // Contact & Communications
+    ContactMessages
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
