@@ -4,6 +4,11 @@ export const Features: CollectionConfig = {
   slug: 'features',
   admin: {
     useAsTitle: 'title',
+    description: `
+      Koleksi ini berisi konten untuk section "Fitur SIUJI" pada landing page.
+      Anda dapat mengelola judul, deskripsi, gambar, dan posisi teks/gambar.
+      Setiap fitur dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+    `,
     defaultColumns: ['title', 'isActive', 'order'],
   },
   access: {

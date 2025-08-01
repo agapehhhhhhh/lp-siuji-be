@@ -4,6 +4,11 @@ export const Testimonials: CollectionConfig = {
   slug: 'testimonials',
   admin: {
     useAsTitle: 'name',
+    description: `
+      Koleksi ini berisi testimoni dari pengguna SIUJI.
+      Anda dapat mengelola nama, posisi, sekolah, konten testimoni, foto profil, dan status aktif.
+      Setiap testimoni dapat diurutkan tampilannya dan ditandai sebagai unggulan.
+    `,
     defaultColumns: ['name', 'position', 'school','isActive'],
   },
   access: {

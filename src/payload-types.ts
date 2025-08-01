@@ -173,7 +173,11 @@ export interface Media {
   focalY?: number | null;
 }
 /**
- * Hero section content for the landing page
+ *
+ *       Koleksi ini berisi konten untuk section "Hero" pada landing page.
+ *       Anda dapat mengelola judul, subjudul, deskripsi, dan gambar latar belakang.
+ *       Setiap elemen dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+ *
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hero-section".
@@ -185,11 +189,24 @@ export interface HeroSection {
   ctaText?: string | null;
   heroImage?: (number | null) | Media;
   isActive?: boolean | null;
+  ornaments?:
+    | {
+        name?: string | null;
+        image?: (number | null) | Media;
+        position?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
- * About section content with carousel slides
+ *
+ *       Koleksi ini berisi konten untuk section "Tentang SIUJI" pada landing page.
+ *       Anda dapat mengelola judul, subjudul, deskripsi utama, serta carousel slides (misal: "Untuk Guru", "Untuk Siswa") yang tampil di frontend.
+ *       Setiap slide dapat berisi gambar, judul, deskripsi, dan urutan tampil. Gambar yang diunggah akan muncul di carousel About Section pada website.
+ *       Perubahan data di sini akan langsung memengaruhi tampilan section About di halaman depan website SIUJI.
+ *
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "about-section".
@@ -251,7 +268,11 @@ export interface AboutSection {
   createdAt: string;
 }
 /**
- * Why choose us section content
+ *
+ *       Koleksi ini berisi konten untuk section "Mengapa Memilih Kami" pada landing page.
+ *       Anda dapat mengelola judul, subjudul, deskripsi, dan gambar latar belakang.
+ *       Setiap elemen dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+ *
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "why-choose-section".
@@ -274,7 +295,11 @@ export interface WhyChooseSection {
   createdAt: string;
 }
 /**
- * Portfolio/Partners section content
+ *
+ *       Koleksi ini berisi konten untuk section "Portofolio" pada landing page.
+ *       Anda dapat mengelola judul, deskripsi, dan logo mitra yang ditampilkan.
+ *       Setiap logo dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+ *
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "portfolio-section".
@@ -305,6 +330,12 @@ export interface PortfolioSection {
   createdAt: string;
 }
 /**
+ *
+ *       Koleksi ini berisi konten untuk section "Fitur SIUJI" pada landing page.
+ *       Anda dapat mengelola judul, deskripsi, gambar, dan posisi teks/gambar.
+ *       Setiap fitur dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+ *
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "features".
  */
@@ -323,6 +354,12 @@ export interface Feature {
   createdAt: string;
 }
 /**
+ *
+ *       Koleksi ini berisi testimoni dari pengguna SIUJI.
+ *       Anda dapat mengelola nama, posisi, sekolah, konten testimoni, foto profil, dan status aktif.
+ *       Setiap testimoni dapat diurutkan tampilannya dan ditandai sebagai unggulan.
+ *
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "testimonials".
  */
@@ -347,6 +384,13 @@ export interface Testimonial {
   createdAt: string;
 }
 /**
+ *
+ *       Koleksi ini berisi rencana harga untuk layanan SIUJI.
+ *       Anda dapat mengelola nama rencana, harga, periode, deskripsi, fitur, dan CTA.
+ *       Setiap rencana dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+ *       Rencana yang ditandai sebagai "populer" akan ditampilkan dengan penekanan khusus.
+ *
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pricing-plans".
  */
@@ -387,6 +431,12 @@ export interface PricingPlan {
   createdAt: string;
 }
 /**
+ *
+ *       Koleksi ini berisi pertanyaan yang sering diajukan (FAQ) pada landing page.
+ *       Anda dapat mengelola pertanyaan, jawaban, kategori, dan tag untuk memudahkan pencarian.
+ *       Setiap FAQ dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+ *
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "faq".
  */
@@ -558,6 +608,14 @@ export interface HeroSectionSelect<T extends boolean = true> {
   ctaText?: T;
   heroImage?: T;
   isActive?: T;
+  ornaments?:
+    | T
+    | {
+        name?: T;
+        image?: T;
+        position?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

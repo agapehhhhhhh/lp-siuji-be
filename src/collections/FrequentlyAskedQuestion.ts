@@ -4,6 +4,11 @@ export const FAQ: CollectionConfig = {
   slug: 'faq',
   admin: {
     useAsTitle: 'question',
+    description: `
+      Koleksi ini berisi pertanyaan yang sering diajukan (FAQ) pada landing page.
+      Anda dapat mengelola pertanyaan, jawaban, kategori, dan tag untuk memudahkan pencarian.
+      Setiap FAQ dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+    `,
     defaultColumns: ['question', 'category', 'isActive'],
   },
   access: {

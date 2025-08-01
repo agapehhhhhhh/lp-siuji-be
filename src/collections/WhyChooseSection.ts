@@ -4,7 +4,11 @@ export const WhyChooseSection: CollectionConfig = {
   slug: 'why-choose-section',
   admin: {
     useAsTitle: 'title',
-    description: 'Why choose us section content',
+    description: `
+      Koleksi ini berisi konten untuk section "Mengapa Memilih Kami" pada landing page.
+      Anda dapat mengelola judul, subjudul, deskripsi, dan gambar latar belakang.
+      Setiap elemen dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+    `,
   },
   access: {
     read: () => true,

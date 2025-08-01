@@ -1,4 +1,5 @@
 import { Payload } from 'payload'
+import { seedMediaFiles } from './seedMedia' // pastikan path impor sesuai
 
 // Fungsi utama untuk melakukan seeding semua koleksi
 export const seedLandingPageCollections = async (payloadInstance: Payload) => {
@@ -19,31 +20,59 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
     ])
     console.log('✅ Existing data cleared.')
 
-    // 1) HERO SECTION — beberapa varian (hanya satu yang aktif)
+    // 1) HERO SECTION — schema baru + ornaments + media upload (5 assets)
     console.log('Seeding Hero Section...')
+
+    // import { seedMediaFiles } from './utils/seedMedia'
+
+    let mediaMap = await seedMediaFiles(payloadInstance, [
+      { key: 'book',    file: 'src/seeds/assets/book-floating.png',    alt: 'Book Floating' },
+      { key: 'bookpen', file: 'src/seeds/assets/bookpen-floating.png', alt: 'Book & Pen Floating' },
+      { key: 'pen',     file: 'src/seeds/assets/pen-floating.png',     alt: 'Pen Floating' },
+      { key: 'pencil',  file: 'src/seeds/assets/pencil-floating.png',  alt: 'Pencil Floating' },
+      { key: 'score',   file: 'src/seeds/assets/score-floating.png',   alt: 'Score Floating' },
+      { key: 'realtime', file: 'src/seeds/assets/pemantauan-realtime.png', alt: 'Realtime' },
+      { key: 'akses',    file: 'src/seeds/assets/akses-seumur-hidup.png',    alt: 'Akses' },
+      { key: 'komunitas',    file: 'src/seeds/assets/komunitas-besar.png',    alt: 'Komunitas' },
+      { key: 'skalabilitas',    file: 'src/seeds/assets/skalabilitas.png',    alt: 'Skalabilitas' },
+    ])
+
+    // Fallback kalau file salah ketik: score-floating.png
+    if (!mediaMap['score']) {
+      const fix = await seedMediaFiles(payloadInstance, [
+        { key: 'score', file: 'src/seeds/assets/score-floating.png', alt: 'Score Floating (fixed)' },
+      ])
+      mediaMap = { ...mediaMap, ...fix }
+    }
+
+    // Helper ornaments
+    const ornamentPresets = (prefix: string) => {
+      const out: { name: string; image: string | null; position?: string }[] = []
+      if (mediaMap['book'])   out.push({ name: `${prefix} Book`,   image: mediaMap['book'],   position: 'top-left' })
+      if (mediaMap['pen'])    out.push({ name: `${prefix} Pen`,    image: mediaMap['pen'],    position: 'top-right' })
+      if (mediaMap['pencil']) out.push({ name: `${prefix} Pencil`, image: mediaMap['pencil'], position: 'bottom-left' })
+      if (mediaMap['score'])  out.push({ name: `${prefix} Score`,  image: mediaMap['score'],  position: 'bottom-right' })
+      if (mediaMap['bookpen']) out.push({ name: `${prefix} Book & Pen`, image: mediaMap['bookpen'], position: 'center' })
+      return out
+    }
+
     const heroVariants = [
-      {
-        title: 'Revolusikan Pendidikan Anda dengan SiUJI',
-        subtitle: 'Platform Ujian Digital untuk Pembelajaran Modern',
-        ctaText: 'Mulai Sekarang',
-        heroImage: null,
-        isActive: true,   // varian utama
-      },
       {
         title: 'Ujian Online Aman, Skala Besar, dan Andal',
         subtitle: 'AI Proctoring, Lockdown Browser, dan Analitik Siap Produksi',
         ctaText: 'Coba Demo',
-        heroImage: null,
+        heroImage: mediaMap['bookpen'] ?? null,
         isActive: false,
-      },
-      {
-        title: 'Kelola Ujian Lebih Cepat',
-        subtitle: 'Bank Soal, Randomisasi, dan Otomasi Penilaian',
-        ctaText: 'Buat Bank Soal',
-        heroImage: null,
-        isActive: false,
+        ornaments: [
+          ...(mediaMap['pen']   ? [{ name: 'Pen Accent',   image: mediaMap['pen'],   position: 'top-center' }] : []),
+          ...(mediaMap['score'] ? [{ name: 'Score Accent', image: mediaMap['score'], position: 'bottom-right' }] : []),
+          ...(mediaMap['book'] ? [{ name: 'Book Accent', image: mediaMap['book'], position: 'left-center' }] : []),
+          ...(mediaMap['pencil'] ? [{ name: 'Pencil Accent', image: mediaMap['pencil'], position: 'right-center' }] : []),
+          ...(mediaMap['bookpen'] ? [{ name: 'Book & Pen Accent', image: mediaMap['bookpen'], position: 'center' }] : []),
+        ],
       },
     ]
+
     for (const hv of heroVariants) {
       await payloadInstance.create({ collection: 'hero-section', data: hv })
     }
@@ -131,49 +160,35 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
             title: 'Pemantauan Real-Time',
             description:
               'Rangkul kekuatan pemantauan real-time dan kendalikan integritas ujian dengan teknologi proctoring canggih.',
-            icon: null,
-            sideImage: null,
+            icon: mediaMap['realtime'] ? isNaN(Number(mediaMap['realtime'])) ? null : Number(mediaMap['realtime']) : null,
+            sideImage: mediaMap['realtime'] ? isNaN(Number(mediaMap['realtime'])) ? null : Number(mediaMap['realtime']) : null,
           },
           {
             title: 'Akses Seumur Hidup',
             description:
               'Materi dan hasil ujian tersimpan aman dan dapat diakses kapan saja, mendukung pembelajaran berkelanjutan.',
-            icon: null,
-            sideImage: null,
+            icon: mediaMap['akses'] ? isNaN(Number(mediaMap['akses'])) ? null : Number(mediaMap['akses']) : null,
+            sideImage: mediaMap['akses'] ? isNaN(Number(mediaMap['akses'])) ? null : Number(mediaMap['akses']) : null,
           },
           {
             title: 'Komunitas Besar',
             description:
               'Terhubung, berkolaborasi, dan berbagi dengan rekan pendidik dan siswa, memperkaya pengalaman belajar.',
-            icon: null,
-            sideImage: null,
+            icon: mediaMap['komunitas'] ? isNaN(Number(mediaMap['komunitas'])) ? null : Number(mediaMap['komunitas']) : null,
+            sideImage: mediaMap['komunitas'] ? isNaN(Number(mediaMap['komunitas'])) ? null : Number(mediaMap['komunitas']) : null,
           },
           {
             title: 'Skalabilitas Teruji',
             description:
               'Arsitektur siap skala mendukung puluhan ribu peserta ujian paralel.',
-            icon: null,
-            sideImage: null,
-          },
-          {
-            title: 'Kepatuhan & Keamanan',
-            description:
-              'Enkripsi berlapis, audit log, dan kontrol akses granular untuk memenuhi standar kepatuhan.',
-            icon: null,
-            sideImage: null,
-          },
-          {
-            title: 'Integrasi Mudah',
-            description:
-              'SSO, LMS, SIS, dan webhook untuk alur kerja kampus yang terotomasi.',
-            icon: null,
-            sideImage: null,
+            icon: mediaMap['skalabilitas'] ? isNaN(Number(mediaMap['skalabilitas'])) ? null : Number(mediaMap['skalabilitas']) : null,
+            sideImage: mediaMap['skalabilitas'] ? isNaN(Number(mediaMap['skalabilitas'])) ? null : Number(mediaMap['skalabilitas']) : null,
           },
         ],
         isActive: true,
       },
     })
-    console.log('✅ Why Choose Section seeded')
+    console.log('✅ Why Choose Section seeded (dengan gambar icon & sideImage)')
 
     // 4) FEATURES — perbanyak item + alternating position
     console.log('Seeding Features...')

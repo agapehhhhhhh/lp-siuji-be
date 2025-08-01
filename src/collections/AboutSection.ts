@@ -4,7 +4,12 @@ export const AboutSection: CollectionConfig = {
   slug: 'about-section',
   admin: {
     useAsTitle: 'title',
-    description: 'About section content with carousel slides',
+    description: `
+      Koleksi ini berisi konten untuk section "Tentang SIUJI" pada landing page.
+      Anda dapat mengelola judul, subjudul, deskripsi utama, serta carousel slides (misal: "Untuk Guru", "Untuk Siswa") yang tampil di frontend.
+      Setiap slide dapat berisi gambar, judul, deskripsi, dan urutan tampil. Gambar yang diunggah akan muncul di carousel About Section pada website.
+      Perubahan data di sini akan langsung memengaruhi tampilan section About di halaman depan website SIUJI.
+    `,
     defaultColumns: ['title', 'isActive']
   },
   access: {

@@ -4,7 +4,11 @@ export const HeroSection: CollectionConfig = {
   slug: 'hero-section',
   admin: {
     useAsTitle: 'title',
-    description: 'Hero section content for the landing page',
+    description: `
+      Koleksi ini berisi konten untuk section "Hero" pada landing page.
+      Anda dapat mengelola judul, subjudul, deskripsi, dan gambar latar belakang.
+      Setiap elemen dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+    `,
   },
   access: {
     read: () => true,
@@ -37,6 +41,30 @@ export const HeroSection: CollectionConfig = {
       name: 'isActive',
       type: 'checkbox',
       defaultValue: true,
+    },
+    {
+      name: 'ornaments',
+      type: 'array',
+      label: 'Ornaments',
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+          label: 'Ornament Name',
+        },
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Ornament Image',
+        },
+        {
+          name: 'position',
+          type: 'text',
+          label: 'Position (optional)',
+          required: false,
+        },
+      ],
     },
   ],
 }

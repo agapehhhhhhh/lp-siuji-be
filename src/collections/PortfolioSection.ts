@@ -4,7 +4,11 @@ export const PortfolioSection: CollectionConfig = {
   slug: 'portfolio-section',
   admin: {
     useAsTitle: 'title',
-    description: 'Portfolio/Partners section content',
+    description: `
+      Koleksi ini berisi konten untuk section "Portofolio" pada landing page.
+      Anda dapat mengelola judul, deskripsi, dan logo mitra yang ditampilkan.
+      Setiap logo dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+    `,
     defaultColumns: ['title', 'isActive', 'order']
   },
   access: {

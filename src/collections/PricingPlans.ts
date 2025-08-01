@@ -4,6 +4,12 @@ export const PricingPlans: CollectionConfig = {
   slug: 'pricing-plans',
   admin: {
     useAsTitle: 'name',
+    description: `
+      Koleksi ini berisi rencana harga untuk layanan SIUJI.
+      Anda dapat mengelola nama rencana, harga, periode, deskripsi, fitur, dan CTA.
+      Setiap rencana dapat diaktifkan/nonaktifkan, dan diurutkan tampilannya.
+      Rencana yang ditandai sebagai "populer" akan ditampilkan dengan penekanan khusus.
+    `,
     defaultColumns: ['name', 'price', 'period', 'isPopular', 'isActive'],
   },
   access: {
