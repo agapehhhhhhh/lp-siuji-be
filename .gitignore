@@ -1,38 +1,104 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# ===============================================
+# SIUJI CMS - GIT IGNORE CONFIGURATION  
+# ===============================================
 
-# dependencies
+# Environment files (IMPORTANT: Contains sensitive data!)
+.env
+.env.local
+.env.*.local
+.env.test
+
+# Dependencies
 /node_modules
 /.pnp
 .pnp.js
 .yarn/install-state.gz
+jspm_packages/
 
+# IDE files
 /.idea/*
 !/.idea/runConfigurations
+.vscode/
+*.swp
+*.swo
+*~
 
-# testing
+# Testing
 /coverage
+test-results/
+*.coverage
 
-# next.js
+# Next.js
 /.next/
 /out/
 
-# production
+# Build outputs
 /build
+/dist
 
-# misc
-.DS_Store
-*.pem
+# Payload CMS specific
+uploads/
+.payload/
+media/
 
-# debug
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Logs
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
-.env*.local
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
 
-# vercel
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*.pem
+
+# Optional npm cache
+.npm
+.eslintcache
+
+# Cache directories
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+.cache
+.parcel-cache
+
+# Vercel
 .vercel
+
+# Docker
+docker-compose.override.yml
+
+# Backup files
+*.bak
+*.backup
+
+# Email test files
+test-email.ts
+test-*.ts
+
+# Temporary files
+tmp/
+temp/
 
 # typescript
 *.tsbuildinfo

@@ -1,69 +1,76 @@
-﻿#  SIUJI CMS Backend
+﻿# 🎯 SIUJI Landing Page CMS
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Node](https://img.shields.io/badge/node-20.x-brightgreen.svg)
-![Docker](https://img.shields.io/badge/docker-ready-blue.svg)
+![Node](https://img.shields.io/badge/node-18+-brightgreen.svg)
 ![Payload](https://img.shields.io/badge/payload-3.x-blue.svg)
-![PostgreSQL](https://img.shields.io/badge/postgresql-15-blue.svg)
-![TypeScript](https://img.shields.io/badge/typescript-ready-blue.svg)
+![PostgreSQL](https://img.shields.io/badge/postgresql-13+-blue.svg)
+![TypeScript](https://img.shields.io/badge/typescript-5.x-blue.svg)
+![Next.js](https://img.shields.io/badge/next.js-15.x-black.svg)
 
-Backend CMS untuk platform SIUJI yang dibangun dengan **Payload CMS 3.x** dan **Next.js**. Service ini menyediakan API untuk mengelola konten landing page SIUJI.
+> **Backend CMS untuk platform SIUJI** - Content Management System yang dibangun dengan **Payload CMS 3.x** dan **Next.js** untuk mengelola konten landing page SIUJI secara dinamis.
 
-##  **Fitur**
+## ✨ **Fitur Utama**
 
--  **Authentication System** - User management dengan Payload CMS
--  **Rich Content Management** - Support untuk rich text, media upload
--  **TypeScript Support** - Type safety untuk better development
--  **Collections Management** - Manage Hero, FAQ, Testimonials, dll
--  **RESTful API** - API endpoints untuk frontend consumption
--  **GraphQL Support** - GraphQL API untuk query yang fleksibel
--  **Docker Ready** - Containerized untuk easy deployment
+- 🔐 **Authentication System** - User management dengan role-based access
+- 📝 **Content Management** - Rich text editor dengan Lexical
+- 🖼️ **Media Management** - Upload, resize, dan kategorisasi gambar otomatis
+- 📧 **Email System** - Contact form dengan notifikasi email otomatis
+- 🔄 **API Integration** - RESTful API untuk frontend consumption
+- 📱 **Responsive Admin** - Admin panel yang mobile-friendly
+- 🐳 **Docker Ready** - Containerized untuk deployment yang mudah
+- 🔒 **Security** - CORS, CSRF protection, dan secure cookies
 
-##  **Tech Stack**
+## 🛠️ **Tech Stack**
 
 - **CMS Framework**: Payload CMS 3.x
-- **Runtime**: Node.js 20+ 
+- **Runtime**: Node.js 18+ 
 - **Framework**: Next.js 15+ (App Router)
-- **Language**: TypeScript
-- **Database**: PostgreSQL 15
-- **Authentication**: Payload Auth with JWT
+- **Language**: TypeScript 5.x
+- **Database**: PostgreSQL 13+
+- **Authentication**: Payload Auth dengan JWT
+- **Email**: Nodemailer dengan Gmail SMTP
+- **Media**: Sharp.js untuk image processing
 
-##  **Quick Start**
+## 🚀 **Quick Start**
 
-### ** Development Mode**
+### 📋 **Prerequisites**
+- [Node.js 18+](https://nodejs.org/)
+- [PostgreSQL 13+](https://www.postgresql.org/)
+- [Git](https://git-scm.com/)
+
+### ⚡ **Development Setup**
 ```bash
-# 1. Clone repository
-git clone <repo-url>
-cd siuji-cms
+# 1. Clone dan setup
+git clone <repository-url>
+cd LandingPage-SIUJI-CMS
 
 # 2. Setup environment
 cp .env.example .env
-npm run generate:secret
+# Edit .env file - lihat SETUP.md untuk panduan
 
 # 3. Install dependencies
 npm install
 
-# 4. Start with Docker
-npm run docker:dev
+# 4. Setup database (pilih salah satu)
+# Option A: Local PostgreSQL
+createdb siuji
 
-# 5. Access CMS Admin
-# http://localhost:3000/admin
+# Option B: Docker
+docker-compose up -d postgres
+
+# 5. Run development server
+npm run dev
+
+# 6. Seed sample data (opsional)
+npm run seed
 ```
 
-### ** Production Mode**
-```bash
-# Start production
-npm run docker:prod
+### 🌐 **Access Points**
+- **Admin Panel**: http://localhost:3000/admin
+- **API Endpoints**: http://localhost:3000/api  
+- **Frontend**: http://localhost:5173 (jika menjalankan terpisah)
 
-# Access CMS
-# http://localhost:3000/admin
-```
-
-##  **Prerequisites**
-
-- [Docker & Docker Compose](https://www.docker.com/products/docker-desktop)
-- [Node.js 20+](https://nodejs.org/) (untuk local development)
-- [PostgreSQL 15+](https://www.postgresql.org/) (untuk local development)
+> 📖 **Panduan setup lengkap tersedia di [SETUP.md](./SETUP.md)**
 
 ##  **Development**
 
