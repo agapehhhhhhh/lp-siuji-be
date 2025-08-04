@@ -48,7 +48,9 @@ export default buildConfig({
     'http://localhost:8080',
     'http://127.0.0.1:5173',
     'http://127.0.0.1:3000',
-    'http://127.0.0.1:8080'
+    'http://127.0.0.1:8080',
+    'http://192.168.18.189:3000',
+    'http://192.168.18.189:5173'
   ],
   csrf: [
     process.env.FRONTEND_URL || 'http://localhost:5173',
@@ -56,7 +58,9 @@ export default buildConfig({
     'http://localhost:8080',
     'http://127.0.0.1:5173',
     'http://127.0.0.1:3000',
-    'http://127.0.0.1:8080'
+    'http://127.0.0.1:8080',
+    'http://192.168.18.189:3000',
+    'http://192.168.18.189:5173'
   ],
   collections: [
     Users, 

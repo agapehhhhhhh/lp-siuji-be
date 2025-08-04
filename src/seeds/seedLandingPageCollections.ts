@@ -35,6 +35,13 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
       { key: 'akses',    file: 'src/seeds/assets/akses-seumur-hidup.png',    alt: 'Akses Seumur Hidup', category: 'feature-image' },
       { key: 'komunitas',    file: 'src/seeds/assets/komunitas-besar.png',    alt: 'Komunitas Besar', category: 'why-choose-icon' },
       { key: 'skalabilitas',    file: 'src/seeds/assets/skalabilitas.png',    alt: 'Skalabilitas Teruji', category: 'feature-image' },
+      // About Section Images
+      { key: 'forStudent1', file: 'src/seeds/assets/for-student-1.jpg', alt: 'Student Learning Interface', category: 'about-image' },
+      { key: 'forStudent2', file: 'src/seeds/assets/for-student-2.png', alt: 'Student Dashboard', category: 'about-image' },
+      { key: 'forStudent3', file: 'src/seeds/assets/for-student-3.webp', alt: 'Student Mobile Experience', category: 'about-image' },
+      { key: 'forTeacher1', file: 'src/seeds/assets/for-teacher-1.jpg', alt: 'Teacher Management Panel', category: 'about-image' },
+      { key: 'forTeacher2', file: 'src/seeds/assets/for-teacher-2.jpg', alt: 'Teacher Course Creation', category: 'about-image' },
+      { key: 'forTeacher3', file: 'src/seeds/assets/for-teacher-3.jpg', alt: 'Teacher Analytics Dashboard', category: 'about-image' },
     ])
 
     // Fallback kalau file salah ketik: score-floating.png
@@ -95,7 +102,7 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
             name: 'Book & Pen Accent', 
             image: safeMediaId(mediaMap['bookpen']), // Convert to number
             position: 'center' 
-          }] : []),
+          }] : [])
         ],
       },
     ]
@@ -151,14 +158,22 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
             title: 'For Teacher',
             description:
               'Kelola materi, tugas, kuis, dan ujian; nilai otomatis & rubrik; pantau progres dengan analitik.',
-            images: [],
+            images: [
+              { image: parseInt(mediaMap['forTeacher1']), alt: 'Teacher Management Panel', order: 0 },
+              { image: parseInt(mediaMap['forTeacher2']), alt: 'Teacher Course Creation', order: 1 },
+              { image: parseInt(mediaMap['forTeacher3']), alt: 'Teacher Analytics Dashboard', order: 2 }
+            ].filter(item => !isNaN(item.image)),
             order: 0,
           },
           {
             title: 'For Student',
             description:
               'Akses materi, kerjakan tugas dan ujian dengan antarmuka sederhana dan ramah perangkat mobile.',
-            images: [],
+            images: [
+              { image: parseInt(mediaMap['forStudent1']), alt: 'Student Learning Interface', order: 0 },
+              { image: parseInt(mediaMap['forStudent2']), alt: 'Student Dashboard', order: 1 },
+              { image: parseInt(mediaMap['forStudent3']), alt: 'Student Mobile Experience', order: 2 }
+            ].filter(item => !isNaN(item.image)),
             order: 1,
           },
         ],
