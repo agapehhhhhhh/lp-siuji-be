@@ -250,60 +250,6 @@ export const seedLandingPageCollections = async (payloadInstance: Payload) => {
         isActive: true,
         order: 4,
       },
-      {
-        title: 'Bank Soal & Randomisasi',
-        description:
-          'Kelola bank soal terstruktur; randomisasi urutan soal & opsi untuk mengurangi kecurangan.',
-        image: null,
-        position: 'left' as const,
-        isActive: true,
-        order: 5,
-      },
-      {
-        title: 'Penilaian Otomatis & Rubrik',
-        description:
-          'Dukungan auto-grading untuk pilihan ganda & isian singkat, serta rubrik untuk esai.',
-        image: null,
-        position: 'right' as const,
-        isActive: true,
-        order: 6,
-      },
-      {
-        title: 'Mode Offline (Client-Side Cache)',
-        description:
-          'Tetap stabil di jaringan tidak ideal; jawaban disinkronkan saat koneksi pulih.',
-        image: null,
-        position: 'left' as const,
-        isActive: true,
-        order: 7,
-      },
-      {
-        title: 'Integrasi SSO & LMS',
-        description:
-          'Integrasi dengan SSO (OAuth/SAML) dan sistem LMS/SIS kampus.',
-        image: null,
-        position: 'right' as const,
-        isActive: true,
-        order: 8,
-      },
-      {
-        title: 'Monitoring Live Session',
-        description:
-          'Dashboard pengawas untuk memantau aktivitas peserta secara langsung.',
-        image: null,
-        position: 'left' as const,
-        isActive: true,
-        order: 9,
-      },
-      {
-        title: 'Ekspor Laporan',
-        description:
-          'Ekspor PDF/CSV untuk kebutuhan akreditasi dan pelaporan institusi.',
-        image: null,
-        position: 'right' as const,
-        isActive: true,
-        order: 10,
-      },
     ]
     for (const feature of featuresData) {
       await payloadInstance.create({ collection: 'features', data: feature })
